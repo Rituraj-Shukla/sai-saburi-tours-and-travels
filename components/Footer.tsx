@@ -85,15 +85,20 @@ export default function Footer() {
         </div>
       </div>
 
-      {/* Oversized wordmark — a deliberate architectural close. Divider sits ABOVE
-          the letters (never through them); the type is clipped only at the side
-          margins, reading as a monument rather than a watermark. */}
-      <div className="relative z-10 select-none overflow-hidden border-t border-on-primary/10 pt-14 md:pt-20">
+      {/* Oversized wordmark — a deliberate architectural close. Each word sits on
+          its own line, sized so the longest word fits fully within the margins,
+          so the complete name always reads as a monument (never clipped). */}
+      <div className="relative z-10 select-none border-t border-on-primary/10 pt-14 md:pt-20">
         <div className="shell">
-          <span className="block font-serif leading-[0.88] tracking-[-0.02em] text-on-primary/[0.13] text-[15vw] md:whitespace-nowrap md:text-[14vw] md:leading-[0.8]">
-            {SITE.name.toUpperCase().split(' ')[0]}
-            <br className="md:hidden" />{' '}
-            {SITE.name.toUpperCase().split(' ')[1]}
+          <span className="block font-serif uppercase leading-[0.84] tracking-[-0.025em] text-on-primary/[0.12] text-[16vw] md:text-[12.5vw]">
+            {SITE.name
+              .toUpperCase()
+              .split(' ')
+              .map((word) => (
+                <span key={word} className="block">
+                  {word}
+                </span>
+              ))}
           </span>
         </div>
       </div>
