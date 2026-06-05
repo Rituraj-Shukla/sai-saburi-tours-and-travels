@@ -33,15 +33,18 @@ export default function Counter({
         return;
       }
 
+      // Sit visibly at zero until the band is actually on screen, so the count-up
+      // always plays in front of the reader (never finishes off-screen).
+      el.textContent = format(0);
       const obj = { n: 0 };
       gsap.to(obj, {
         n: value,
-        duration: 2,
-        ease: 'power3.out',
+        duration: 2.2,
+        ease: 'power2.out',
         onUpdate: () => {
           el.textContent = format(obj.n);
         },
-        scrollTrigger: { trigger: el, start: 'top 90%' },
+        scrollTrigger: { trigger: el, start: 'top 78%' },
       });
     },
     { scope: ref },
