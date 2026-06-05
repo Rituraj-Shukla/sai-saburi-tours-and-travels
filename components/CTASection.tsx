@@ -37,8 +37,6 @@ export default function CTASection({
       )}
 
       <div className="relative z-10 shell flex flex-col items-center py-32 text-center md:py-44">
-        {/* Hairline marks the start of the closing moment. */}
-        <span className="mb-10 h-12 w-px bg-tertiary-fixed/50" />
         <SectionLabel className="!text-tertiary-fixed">{eyebrow}</SectionLabel>
         <AnimatedText
           as="h2"
