@@ -55,6 +55,11 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className={`${libreCaslon.variable} ${hanken.variable}`}>
+      <head>
+        {/* Warm up the image CDN connection so remote photos paint sooner. */}
+        <link rel="preconnect" href="https://images.unsplash.com" crossOrigin="" />
+        <link rel="dns-prefetch" href="https://images.unsplash.com" />
+      </head>
       <body className="grain overflow-x-hidden">
         <Intro />
         <SmoothScroll>

@@ -115,6 +115,8 @@ export default function Hero({
               poster={image}
               preload="metadata"
             >
+              {/* WebM first (small, modern); MP4 fallback for Safari/iOS. */}
+              <source src={video.replace(/\.mp4$/, '.webm')} type="video/webm" />
               <source src={video} type="video/mp4" />
             </video>
           ) : (

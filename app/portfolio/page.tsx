@@ -97,7 +97,7 @@ export default function PortfolioPage() {
                     </h2>
                     <p className="t-body mt-3 text-secondary">{property.tagline}</p>
 
-                    <div className="mt-6 flex items-end justify-between gap-6 border-t border-outline-variant/70 pt-5">
+                    <div className="mt-6 flex flex-col gap-4 border-t border-outline-variant/70 pt-5 sm:flex-row sm:items-end sm:justify-between sm:gap-6">
                       <div>
                         <p className="t-label text-secondary">Guide</p>
                         <p className="mt-1 font-serif text-headline-md">
