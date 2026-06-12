@@ -101,6 +101,59 @@ export function MailIcon(p: IconProps) {
   );
 }
 
+export function ShieldIcon(p: IconProps) {
+  return (
+    <svg {...base} {...p}>
+      <path d="M12 3l7 3v5c0 4.5-3 8-7 10-4-2-7-5.5-7-10V6l7-3Z" />
+      <path d="M9 12l2 2 4-4" />
+    </svg>
+  );
+}
+
+export function TagIcon(p: IconProps) {
+  return (
+    <svg {...base} {...p}>
+      <path d="M3 12V4h8l9 9-7 7-9-9Z" />
+      <circle cx="7.5" cy="7.5" r="1.4" />
+    </svg>
+  );
+}
+
+export function HeartIcon(p: IconProps) {
+  return (
+    <svg {...base} {...p}>
+      <path d="M12 20s-7-4.5-9.2-9A4.6 4.6 0 0 1 12 6a4.6 4.6 0 0 1 9.2 5C19 15.5 12 20 12 20Z" />
+    </svg>
+  );
+}
+
+export function StarIcon(p: IconProps) {
+  return (
+    <svg {...base} {...p}>
+      <path d="M12 3.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L12 17.9 6.8 19.6l1-5.8L3.5 9.7l5.9-.9L12 3.5Z" />
+    </svg>
+  );
+}
+
+export function RouteIcon(p: IconProps) {
+  return (
+    <svg {...base} {...p}>
+      <circle cx="6" cy="18" r="2.4" />
+      <circle cx="18" cy="6" r="2.4" />
+      <path d="M8.4 18H14a3.5 3.5 0 0 0 0-7H10a3.5 3.5 0 0 1 0-7h5.6" />
+    </svg>
+  );
+}
+
+export function ClockIcon(p: IconProps) {
+  return (
+    <svg {...base} {...p}>
+      <circle cx="12" cy="12" r="9" />
+      <path d="M12 7v5l3.5 2" />
+    </svg>
+  );
+}
+
 export function QuoteMark(p: IconProps) {
   return (
     <svg {...base} {...p} strokeWidth={0} fill="currentColor">

@@ -13,10 +13,10 @@
     text-rendering: optimizeLegibility;
     /* Bespoke thin scrollbar (Firefox). */
     scrollbar-width: thin;
-    scrollbar-color: rgba(26, 23, 20, 0.28) transparent;
+    scrollbar-color: rgba(14, 59, 54, 0.30) transparent;
   }
 
-  /* Bespoke thin scrollbar (WebKit) — sharp, recessed, warm ink. */
+  /* Bespoke thin scrollbar (WebKit) — recessed teal ink. */
   ::-webkit-scrollbar {
     width: 9px;
     height: 9px;
@@ -25,16 +25,17 @@
     background: transparent;
   }
   ::-webkit-scrollbar-thumb {
-    background-color: rgba(26, 23, 20, 0.22);
+    background-color: rgba(14, 59, 54, 0.24);
     border: 3px solid transparent;
     background-clip: padding-box;
+    border-radius: 9999px;
   }
   ::-webkit-scrollbar-thumb:hover {
-    background-color: rgba(26, 23, 20, 0.42);
+    background-color: rgba(14, 59, 54, 0.44);
   }
   /* On dark surfaces the thumb flips to warm light. */
   .bg-primary::-webkit-scrollbar-thumb {
-    background-color: rgba(244, 239, 231, 0.25);
+    background-color: rgba(247, 242, 233, 0.25);
   }
 
   body {
@@ -45,9 +46,9 @@
     @apply bg-tertiary-fixed text-on-tertiary-fixed;
   }
 
-  /* Hairline focus ring consistent with the sharp, technical aesthetic. */
+  /* Focus ring in the brand teal ink. */
   :focus-visible {
-    outline: 2px solid #1c1b1b;
+    outline: 2px solid #0e3b36;
     outline-offset: 3px;
   }
 }

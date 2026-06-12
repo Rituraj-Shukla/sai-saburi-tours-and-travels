@@ -1,8 +1,8 @@
 {
-  "name": "meridian-estates",
+  "name": "fun-on-the-wheels",
   "version": "1.0.0",
   "private": true,
-  "description": "Meridian Estates — luxury real estate, Abu Dhabi",
+  "description": "Fun On The Wheels Tours & Travels — premium pilgrimage & heritage travel, Shirdi",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -13,7 +13,7 @@
     "@gsap/react": "^2.1.2",
     "gsap": "^3.15.0",
     "lenis": "^1.3.23",
-    "next": "15.1.6",
+    "next": "^16.2.9",
     "react": "19.0.0",
     "react-dom": "19.0.0"
   },

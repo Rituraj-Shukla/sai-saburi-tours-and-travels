@@ -31,10 +31,37 @@ export default function SmoothScroll({ children }: { children: React.ReactNode }
 
     ScrollTrigger.refresh();
 
+    // If the page loads with a hash (e.g. a shared #fleet link or a nav anchor
+    // followed across a route change), glide to that section once layout settles.
+    if (window.location.hash) {
+      const id = window.location.hash;
+      requestAnimationFrame(() => {
+        setTimeout(() => lenis?.scrollTo(id, { offset: -80 }), 250);
+      });
+    }
+
     return () => {
       gsap.ticker.remove(update);
       lenis?.off('scroll', onScroll);
     };
+  }, []);
+
+  // Smooth-scroll same-page anchor clicks (nav + footer links) through Lenis.
+  useEffect(() => {
+    const onClick = (e: MouseEvent) => {
+      const a = (e.target as HTMLElement)?.closest('a');
+      const href = a?.getAttribute('href');
+      if (!href || !href.startsWith('#') || href === '#') return;
+      const target = document.querySelector(href);
+      if (!target) return;
+      e.preventDefault();
+      const lenis = lenisRef.current?.lenis;
+      if (lenis) lenis.scrollTo(target as HTMLElement, { offset: -80 });
+      else target.scrollIntoView({ behavior: 'smooth' });
+      history.replaceState(null, '', href);
+    };
+    document.addEventListener('click', onClick);
+    return () => document.removeEventListener('click', onClick);
   }, []);
 
   return (

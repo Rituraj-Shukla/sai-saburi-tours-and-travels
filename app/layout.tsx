@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { Libre_Caslon_Text, Hanken_Grotesk } from 'next/font/google';
+import { Fraunces, Mukta, Great_Vibes } from 'next/font/google';
 import './globals.css';
 import 'lenis/dist/lenis.css';
 import Nav from '@/components/Nav';
@@ -8,41 +8,55 @@ import SmoothScroll from '@/components/providers/SmoothScroll';
 import Intro from '@/components/interactions/Intro';
 import { SITE } from '@/lib/site';
 
-const libreCaslon = Libre_Caslon_Text({
+// Display — Fraunces: a warm, old-style optical serif. Softer and more humanist
+// than the base brand's high-contrast Didone, fitting a devotional, family-run feel.
+const fraunces = Fraunces({
   subsets: ['latin'],
-  weight: ['400', '700'],
+  weight: ['400', '500', '600', '700'],
   style: ['normal', 'italic'],
-  variable: '--font-libre-caslon',
+  variable: '--font-display',
   display: 'swap',
 });
 
-const hanken = Hanken_Grotesk({
+// Body / UI — Mukta: a friendly humanist sans (Latin + Devanagari ready), calm
+// and approachable, replacing the geometric Jost.
+const mukta = Mukta({
   subsets: ['latin'],
-  weight: ['300', '400', '500', '600'],
-  variable: '--font-hanken',
+  weight: ['300', '400', '500', '600', '700'],
+  variable: '--font-body',
+  display: 'swap',
+});
+
+// Script — for the wordmark only.
+const greatVibes = Great_Vibes({
+  subsets: ['latin'],
+  weight: ['400'],
+  variable: '--font-script',
   display: 'swap',
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://meridian-estates.ae'),
+  metadataBase: new URL('https://saisaburitravels.in'),
   title: {
-    default: `${SITE.name} — ${SITE.tagline} | Luxury Real Estate, Abu Dhabi`,
+    default: `${SITE.legalName} — ${SITE.tagline} | Shirdi Tours & Taxi`,
     template: `%s — ${SITE.name}`,
   },
   description: SITE.description,
   keywords: [
-    'luxury real estate Abu Dhabi',
-    'Saadiyat Island villas',
-    'Al Reem penthouse',
-    'Nurai Island estate',
-    'UAE property advisory',
-    'off-market residences',
+    'Sai Saburi Tours and Travels',
+    'Shirdi tours and travels',
+    'Shirdi Sai darshan package',
+    'Shirdi taxi service',
+    'Shani Shingnapur Aurangabad tour',
+    'Jyotirlinga tour package',
+    'flight rail hotel booking Shirdi',
+    'family honeymoon packages Shirdi',
   ],
   openGraph: {
-    title: `${SITE.name} — ${SITE.tagline}`,
+    title: `${SITE.legalName} — ${SITE.tagline}`,
     description: SITE.description,
     type: 'website',
-    locale: 'en_AE',
+    locale: 'en_IN',
     siteName: SITE.name,
   },
   twitter: {
@@ -54,12 +68,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${libreCaslon.variable} ${hanken.variable}`}>
-      <head>
-        {/* Warm up the image CDN connection so remote photos paint sooner. */}
-        <link rel="preconnect" href="https://images.unsplash.com" crossOrigin="" />
-        <link rel="dns-prefetch" href="https://images.unsplash.com" />
-      </head>
+    <html lang="en" className={`${fraunces.variable} ${mukta.variable} ${greatVibes.variable}`}>
       <body className="grain overflow-x-hidden">
         <Intro />
         <SmoothScroll>

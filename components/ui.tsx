@@ -30,7 +30,7 @@ const VARIANTS: Record<ButtonVariant, string> = {
   ghost: 'text-current',
 };
 
-/** Sharp-cornered CTA. Renders as a Link when href is set. */
+/** Soft pill CTA. Renders as a Link when href is set. */
 export function ButtonLink({
   href,
   children,
@@ -48,7 +48,7 @@ export function ButtonLink({
     <Link
       href={href}
       data-cursor=""
-      className={`group/btn relative t-label inline-flex items-center justify-center gap-2 overflow-hidden px-9 py-4 transition-colors duration-300 ${VARIANTS[variant]} ${className}`}
+      className={`group/btn relative t-label inline-flex items-center justify-center gap-2 overflow-hidden rounded-full px-9 py-4 transition-colors duration-300 ${VARIANTS[variant]} ${className}`}
     >
       <span className="relative z-10 inline-flex items-center gap-2">{children}</span>
     </Link>

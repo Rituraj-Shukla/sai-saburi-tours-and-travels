@@ -1,9 +1,11 @@
 import type { Config } from 'tailwindcss';
 
 /**
- * Meridian Estates design tokens — ported verbatim from the reference DESIGN.md.
- * Editorial Minimalism: charcoal / warm-ivory / champagne-gold, sharp 0px corners,
- * 8px baseline, aggressive 160px vertical rhythm.
+ * Sai Saburi Tours & Travels design tokens — "Sandalwood & Temple Teal".
+ * Devotional warmth: sandal-cream surfaces / deep peacock-teal ink / saffron-marigold
+ * accent. Softly rounded shape language, 8px baseline, calmer 128px vertical rhythm.
+ * Differentiated from the Fun On The Wheels base (limestone / charcoal / champagne-gold,
+ * sharp 0px corners) while keeping the same structure, GSAP motion and smooth scroll.
  */
 const config: Config = {
   content: [
@@ -14,51 +16,53 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        // Surfaces — warm limestone base + tonal tiers (reads "expensive": warmer,
-        // softer and lower-key than a clinical white).
-        surface: '#F4EFE7',
-        'surface-dim': '#DCD4C6',
-        'surface-bright': '#FBF8F2',
+        // Surfaces — soft sandalwood (chandan) cream base + tonal tiers. Warmer and
+        // creamier than the limestone base it replaces, with a faint green undertone.
+        surface: '#F7F2E9',
+        'surface-dim': '#E4DBC9',
+        'surface-bright': '#FCF9F2',
         'surface-container-lowest': '#FFFFFF',
-        'surface-container-low': '#EFE9DF',
-        'surface-container': '#E9E2D6',
-        'surface-container-high': '#E2DACC',
-        'surface-container-highest': '#DCD4C6',
-        'surface-variant': '#E2DACC',
-        background: '#F4EFE7',
-        // Ink — warm near-black, never cold grey.
-        'on-surface': '#1A1714',
-        'on-surface-variant': '#4A453D',
-        'on-background': '#1A1714',
-        'inverse-surface': '#26221E',
-        'inverse-on-surface': '#F2ECE2',
-        outline: '#8A8275',
-        'outline-variant': '#CFC7B8',
-        // Primary — deep warm charcoal (richer than pure black under warm light).
-        primary: '#100E0C',
-        'on-primary': '#F4EFE7',
-        'primary-container': '#1A1714',
-        'on-primary-container': '#9A9183',
-        'primary-fixed': '#E2DACC',
-        'primary-fixed-dim': '#C7BDAA',
-        'on-primary-fixed': '#1A1714',
-        'on-primary-fixed-variant': '#4A453D',
-        'inverse-primary': '#C7BDAA',
-        // Secondary — warm taupe.
-        secondary: '#6E665A',
+        'surface-container-low': '#F1EBDD',
+        'surface-container': '#EBE4D3',
+        'surface-container-high': '#E4DBC9',
+        'surface-container-highest': '#DCD2BF',
+        'surface-variant': '#E4DBC9',
+        background: '#F7F2E9',
+        // Ink — very dark teal-charcoal, never cold grey.
+        'on-surface': '#15211E',
+        'on-surface-variant': '#44524D',
+        'on-background': '#15211E',
+        'inverse-surface': '#103833',
+        'inverse-on-surface': '#F1ECE0',
+        outline: '#7C8A82',
+        'outline-variant': '#CDC6B6',
+        // Primary — deep peacock / temple teal. Carries every dark band (hero base,
+        // stat band, story, footer, CTA) with a devotional, women-led calm.
+        primary: '#0E3B36',
+        'on-primary': '#F7F2E9',
+        'primary-container': '#103833',
+        'on-primary-container': '#9DB3AC',
+        'primary-fixed': '#CDE0DB',
+        'primary-fixed-dim': '#A9C6BF',
+        'on-primary-fixed': '#06231F',
+        'on-primary-fixed-variant': '#2E4A44',
+        'inverse-primary': '#A9C6BF',
+        // Secondary — muted teal-slate for calm body copy (AA on cream).
+        secondary: '#4E5E59',
         'on-secondary': '#FFFFFF',
-        'secondary-container': '#E0D9CC',
-        'on-secondary-container': '#5F584D',
-        // Tertiary / champagne gold accent — the single luxury signal.
-        tertiary: '#A8884F',
+        'secondary-container': '#DCE5DF',
+        'on-secondary-container': '#3A4641',
+        // Tertiary / saffron-marigold accent — the single devotional signal. Deep
+        // saffron reads AA on cream; the brighter "fixed" marigold sits on teal.
+        tertiary: '#B45816',
         'on-tertiary': '#FFFFFF',
-        'tertiary-container': '#2A1E0A',
-        'on-tertiary-container': '#C9A86A',
-        'tertiary-fixed': '#D8B981',
-        'tertiary-fixed-dim': '#BC9C63',
-        gold: '#A8884F',
-        'on-tertiary-fixed': '#2A1E0A',
-        'on-tertiary-fixed-variant': '#5C461F',
+        'tertiary-container': '#2A1404',
+        'on-tertiary-container': '#F0A85A',
+        'tertiary-fixed': '#EFA64A',
+        'tertiary-fixed-dim': '#DB9038',
+        gold: '#B45816',
+        'on-tertiary-fixed': '#2A1404',
+        'on-tertiary-fixed-variant': '#6B3A10',
         // Feedback
         error: '#ba1a1a',
         'on-error': '#ffffff',
@@ -67,17 +71,18 @@ const config: Config = {
       },
       spacing: {
         unit: '8px',
-        gutter: '32px',
+        gutter: '36px',
         'margin-mobile': '24px',
-        'margin-desktop': '80px',
-        'section-gap': '160px',
+        'margin-desktop': '72px',
+        'section-gap': '128px',
       },
       maxWidth: {
         'container-max': '1440px',
       },
       fontFamily: {
-        serif: ['var(--font-libre-caslon)', 'Georgia', 'serif'],
-        sans: ['var(--font-hanken)', 'system-ui', 'sans-serif'],
+        serif: ['var(--font-display)', 'Georgia', 'serif'],
+        sans: ['var(--font-body)', 'system-ui', 'sans-serif'],
+        script: ['var(--font-script)', 'cursive'],
       },
       fontSize: {
         'display-xl': ['120px', { lineHeight: '0.95', letterSpacing: '-0.03em', fontWeight: '400' }],
@@ -91,9 +96,16 @@ const config: Config = {
         quote: ['26px', { lineHeight: '1.45', fontWeight: '400' }],
       },
       borderRadius: {
-        // Sharp shape language — right angles everywhere.
+        // Soft, hospitable shape language — gently rounded surfaces (the clearest
+        // structural break from the base brand's hard 0px corners).
         none: '0',
-        DEFAULT: '0',
+        sm: '6px',
+        DEFAULT: '10px',
+        md: '12px',
+        lg: '16px',
+        xl: '22px',
+        '2xl': '28px',
+        '3xl': '36px',
         full: '9999px',
       },
       boxShadow: {

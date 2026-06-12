@@ -6,6 +6,24 @@
       "runtimeExecutable": "npm",
       "runtimeArgs": ["run", "start"],
       "port": 3000
+    },
+    {
+      "name": "dev",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["run", "dev", "--", "-p", "3007"],
+      "port": 3007
+    },
+    {
+      "name": "dev3001",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["run", "dev", "--", "-p", "3001"],
+      "port": 3001
+    },
+    {
+      "name": "shivshakti",
+      "runtimeExecutable": "python",
+      "runtimeArgs": ["-m", "http.server", "5577", "--directory", "C:\\Users\\91639\\Downloads\\VistansT\\Shiv-Shakti-Tours-and-Travels"],
+      "port": 5577
     }
   ]
 }

@@ -68,6 +68,32 @@ export default function Hero({
     { scope: root },
   );
 
+  // Scroll cue is a "you are at the top" affordance — it should retire the moment
+  // the journey begins. Fade + drift up over the first sliver of scroll.
+  useGSAP(
+    () => {
+      const cue = root.current?.querySelector<HTMLElement>('.hero-cue');
+      if (!cue) return;
+
+      if (prefersReducedMotion()) {
+        const onScroll = () => {
+          cue.style.transition = 'opacity 300ms ease';
+          cue.style.opacity = window.scrollY > 16 ? '0' : '1';
+        };
+        window.addEventListener('scroll', onScroll, { passive: true });
+        return () => window.removeEventListener('scroll', onScroll);
+      }
+
+      gsap.to(cue, {
+        autoAlpha: 0,
+        y: -14,
+        ease: 'power2.out',
+        scrollTrigger: { trigger: root.current, start: 'top top', end: '+=180', scrub: true },
+      });
+    },
+    { scope: root },
+  );
+
   // Intro-gated entrance: media un-clips, headline lines rise, copy fades up.
   useGSAP(
     () => {
@@ -103,17 +129,21 @@ export default function Hero({
   return (
     <header ref={root} className={`relative w-full overflow-hidden ${HEIGHTS[height]}`}>
       <div className="hero-clip absolute inset-0 overflow-hidden">
-        <div ref={media} className="absolute inset-0 scale-[1.12] will-change-transform">
+        <div ref={media} className="absolute inset-0 scale-[1.12] bg-primary will-change-transform">
           {video ? (
+            // No `poster` — a solid base color sits behind, and the video fades in
+            // only once it can play, so no old/stale image ever flashes.
             <video
               ref={videoRef}
-              className="h-full w-full object-cover"
+              className="h-full w-full object-cover opacity-0 transition-opacity duration-700 ease-out"
               autoPlay
               muted
               loop
               playsInline
-              poster={image}
-              preload="metadata"
+              preload="auto"
+              onCanPlay={(e) => {
+                e.currentTarget.style.opacity = '1';
+              }}
             >
               <source src={video} type="video/mp4" />
             </video>

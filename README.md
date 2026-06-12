@@ -1,58 +1,62 @@
-# Meridian Estates
+# Sai Saburi — Tours & Travels
 
-A luxury real-estate marketing site for Abu Dhabi, UAE — **Next.js (App Router) + React + TypeScript + Tailwind**. Editorial-minimalist design (Libre Caslon Text + Hanken Grotesk, warm limestone / warm-charcoal / champagne-gold, sharp corners) with a handcrafted, award-tier motion layer.
+Premium website for **Sai Saburi Tours & Travels**, a family-run, women-led travel
+agency in Shirdi, Maharashtra (est. 2005 · 5.0★ across 66 Google reviews). Sai darshan,
+Shani Shingnapur & Aurangabad tours and Jyotirlinga circuits, plus a full travel desk:
+rail / flight / hotel booking and custom family & honeymoon packages.
 
-## Motion stack (the "alive" layer)
+A single-page, cinematic Home experience: sacred-journey hero, trust strip, family-run
+value pillars, signature journeys & packages, fleet showcase, the owner story, real
+Google testimonials, and a call/WhatsApp CTA.
 
-| Library | Role |
-| --- | --- |
-| **Lenis** | Physics-based smooth scroll, synced to the GSAP ticker (one rAF loop, no jank) |
-| **GSAP + ScrollTrigger** | All scroll-driven motion: parallax, clip reveals, pinned horizontal gallery, counters |
-| **GSAP SplitText** | Line-by-line masked headline reveals (`AnimatedText`) |
-| **@gsap/react** | `useGSAP` for automatic context cleanup |
+> Cloned from the *Fun On The Wheels* build and re-skinned with a distinct
+> **"Sandalwood & Temple Teal"** identity (sandal-cream / peacock-teal / saffron-marigold,
+> softly rounded shapes) while keeping the same structure, GSAP motion and tech stack.
 
-Handcrafted interactions live in `components/interactions/`:
-`Cursor` (bespoke magnetic cursor), `Magnetic` (CTA pull), `AnimatedText` (kinetic headings),
-`RevealImage` (clip-path + parallax), `Marquee` (scroll-velocity reactive), `Counter`
-(count-up stats), `Intro` (one-time entrance curtain). Heroes (`components/Hero.tsx`) play
-self-hosted cinematic video (`public/videos/`) with poster fallbacks.
+## Tech stack
 
-**Everything is gated by `prefers-reduced-motion`** and degrades gracefully (e.g. the pinned
-horizontal gallery becomes a native swipe carousel on touch / small screens via
-`gsap.matchMedia`).
+| Layer | Choice |
+|---|---|
+| Framework | Next.js 15 (App Router) · React 19 · TypeScript |
+| Styling | Tailwind CSS 3.4 (token-driven) |
+| Fonts | `next/font`: Fraunces (display), Mukta (body), Great Vibes (logo script) |
+| Motion | GSAP 3 + ScrollTrigger + SplitText, Lenis smooth-scroll (synced to GSAP ticker) |
+| Images | `next/image`; **all assets self-hosted in `/public`** (no remote dependency) |
 
-## Run
+## Getting started
 
 ```bash
 npm install
 npm run dev      # http://localhost:3000
-npm run build    # production build
-npm start        # serve the production build
+```
+
+```bash
+npm run build && npm run start   # production
 ```
 
 ## Structure
 
-| Path | Purpose |
-| --- | --- |
-| `app/` | Pages — Home, `portfolio`, `portfolio/[slug]`, `services`, `heritage`, `contact` |
-| `components/` | `Nav`, `Footer`, `Hero`, `Reveal`, `PropertyCard`, `StatBand`, `CTASection`, `ContactForm`, `ui`, `icons` |
-| `lib/` | `site.ts` (brand/config), `properties.ts` (listings + helpers), `images.ts` (image registry) |
-| `tailwind.config.ts` | Design tokens (colors, type scale, spacing) from the brand system |
-| `app/globals.css` | Base styles, motion primitives, `prefers-reduced-motion` handling |
+```
+app/            App Router — layout, home page, template, not-found, globals.css
+components/     Nav, Hero, Footer, StatBand, CTASection, Logo, icons, interactions/*
+lib/            Typed content + config — site.ts, journeys.ts, fleet.ts, images.ts
+public/         All images — hero/, cta/, journeys/, fleet/, videos/
+docs/           RESEARCH.md (business + review analysis), HOMEPAGE-CONCEPT.md
+```
 
-## Customising
+All copy and figures are content — edit the `lib/*.ts` data files to update the site.
 
-- **Brand / contact / offices / stats** → `lib/site.ts`
-- **Listings** → `lib/properties.ts` (the `[slug]` detail pages generate statically from this)
-- **Imagery** → `lib/images.ts` — curated Unsplash stills; replace with the client's own
-  photography in one place. (`next.config.mjs` allow-lists `images.unsplash.com`.)
-- **Hero video** → `public/videos/*.mp4` — licensed cinematic drone footage (royalty-free,
-  Pexels). Swap any clip for AI-generated or real drone footage of the actual properties; the
-  `video` prop on `<Hero>` is the only reference.
+## Image credits
+
+Vehicle & landmark photos from **Wikimedia Commons** (CC-licensed); scenic/atmospheric
+shots from **Unsplash**. All downloaded and self-hosted under `/public`.
+Replace with the client's own photography when available.
 
 ## Notes
 
-- Animations (reveals, hero parallax, hover scales) are transform/opacity only and fully disabled
-  under `prefers-reduced-motion`.
-- The contact form is front-end only (success state on submit). Wire `components/ContactForm.tsx`
-  to an email/CRM endpoint to make it live.
+- The navbar logo is an SVG car mark + web-font wordmark. For a pixel-exact logo, drop the
+  original artwork at `public/logo.png` and wire it into `components/Logo.tsx`.
+- Business facts (5.0★ / 66 reviews, est. 2005, owner Mrs. Mayuri Deore, driver-guide Manoj
+  Patil, services & contact) are sourced from the Google Maps listing and the client's
+  business profile. Testimonials are verbatim 5★ Google reviews.
+- Replace the placeholder `/public` imagery with the client's own photography when available.

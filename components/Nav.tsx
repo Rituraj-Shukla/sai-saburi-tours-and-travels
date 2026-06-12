@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useEffect, useRef, useState } from 'react';
 import { NAV_LINKS, SITE } from '@/lib/site';
+import Logo from './Logo';
 
 /**
  * Minimal floating nav. Hides on scroll-down, reappears on scroll-up. Turns from
@@ -42,11 +43,7 @@ export default function Nav() {
   // Pages whose top is a dark hero (video / dark image) — nav floats transparent
   // with light text there. Everywhere else the top is light limestone, so the nav
   // must render solid (dark text) on load or it vanishes into the background.
-  const darkHero =
-    pathname === '/' ||
-    pathname === '/services' ||
-    pathname === '/heritage' ||
-    (pathname.startsWith('/portfolio/') && pathname !== '/portfolio');
+  const darkHero = pathname === '/';
 
   const solid = scrolled || open || !darkHero;
 
@@ -58,18 +55,17 @@ export default function Nav() {
         }`}
       >
         <nav
-          className={`shell mt-4 flex items-center justify-between px-5 py-3 transition-colors duration-500 md:px-7 ${
+          className={`shell mt-4 flex items-center justify-between rounded-2xl px-5 py-3 transition-colors duration-500 md:px-7 ${
             solid ? 'bg-surface/85 shadow-ambient backdrop-blur-md' : 'bg-transparent'
           }`}
         >
           <Link
             href="/"
-            className={`font-serif text-lg tracking-[0.22em] transition-colors md:text-xl ${
-              solid ? 'text-on-surface' : 'text-white'
-            }`}
+            className={`transition-colors ${solid ? 'text-on-surface' : 'text-white'}`}
             onClick={() => setOpen(false)}
+            aria-label={`${SITE.legalName} — home`}
           >
-            {SITE.name.toUpperCase()}
+            <Logo compact />
           </Link>
 
           {/* Desktop links */}
@@ -91,12 +87,12 @@ export default function Nav() {
                 {link.label}
               </Link>
             ))}
-            <Link
-              href="/contact#enquiry"
-              className="t-label bg-primary px-6 py-3 text-on-primary transition-opacity duration-300 hover:opacity-80"
+            <a
+              href={`tel:${SITE.phoneIntl}`}
+              className="t-label rounded-full bg-primary px-6 py-3 text-on-primary transition-opacity duration-300 hover:opacity-80"
             >
-              Private Enquiry
-            </Link>
+              Plan a Trip
+            </a>
           </div>
 
           {/* Mobile toggle */}
@@ -142,13 +138,13 @@ export default function Nav() {
               {link.label}
             </Link>
           ))}
-          <Link
-            href="/contact#enquiry"
+          <a
+            href={`tel:${SITE.phoneIntl}`}
             onClick={() => setOpen(false)}
-            className="t-label mt-8 inline-block bg-primary px-7 py-4 text-center text-on-primary"
+            className="t-label mt-8 inline-block rounded-full bg-primary px-7 py-4 text-center text-on-primary"
           >
-            Private Enquiry
-          </Link>
+            Plan a Trip · {SITE.phone}
+          </a>
         </div>
       </div>
     </>

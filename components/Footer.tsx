@@ -15,18 +15,18 @@ export default function Footer() {
         {/* Closing invitation */}
         <Reveal className="flex flex-col gap-8 border-b border-on-primary/10 pb-20 md:flex-row md:items-end md:justify-between md:pb-28">
           <div>
-            <p className="t-label text-on-primary/45">The Final Word</p>
+            <p className="t-label text-on-primary/45">Plan Your Journey</p>
             <p className="mt-6 max-w-xl font-serif text-[28px] leading-[1.25] text-on-primary md:text-[40px] md:leading-[1.15]">
-              When you are ready, a private conversation awaits.
+              Tell us your dates and darshan — we&apos;ll take care of the rest.
             </p>
           </div>
-          <Link
-            href="/contact#enquiry"
+          <a
+            href={`tel:${SITE.phoneIntl}`}
             className="group inline-flex items-center gap-4 t-label text-tertiary-fixed"
           >
-            <span className="link-underline">Begin the Enquiry</span>
+            <span className="link-underline">Call {SITE.phone}</span>
             <ArrowRight className="h-5 w-5 transition-transform duration-500 ease-smooth group-hover:translate-x-2" />
-          </Link>
+          </a>
         </Reveal>
 
         {/* Columns */}
@@ -34,12 +34,13 @@ export default function Footer() {
           <div className="col-span-2 md:col-span-1">
             <p className="t-label text-on-primary/40">Contact</p>
             <div className="mt-5 space-y-2 t-body text-on-primary/70">
+              <a href={`tel:${SITE.phoneIntl}`} className="block link-underline w-fit">
+                {SITE.phone}
+              </a>
               <a href={`mailto:${SITE.email}`} className="block link-underline w-fit">
                 {SITE.email}
               </a>
-              <a href={`tel:${SITE.phone.replace(/\s/g, '')}`} className="block link-underline w-fit">
-                {SITE.phone}
-              </a>
+              <p className="max-w-[15rem] pt-1 leading-relaxed text-on-primary/55">{SITE.address}</p>
             </div>
           </div>
 
@@ -48,12 +49,14 @@ export default function Footer() {
             <ul className="mt-5 space-y-2 t-body text-on-primary/70">
               {OFFICES.map((o) => (
                 <li key={o.city}>
-                  <Link
-                    href="/contact"
+                  <a
+                    href={SITE.mapsUrl}
+                    target="_blank"
+                    rel="noreferrer"
                     className="inline-block transition-transform duration-300 hover:translate-x-1 hover:text-on-primary"
                   >
                     {o.city} {o.role}
-                  </Link>
+                  </a>
                 </li>
               ))}
             </ul>
@@ -76,29 +79,21 @@ export default function Footer() {
           </div>
 
           <div className="col-span-2 md:col-span-1">
-            <p className="t-label text-on-primary/40">Private Briefings</p>
+            <p className="t-label text-on-primary/40">Travel Notes</p>
             <p className="t-body mt-5 text-on-primary/55">
-              Off-market opportunities, delivered in confidence.
+              Seasonal darshan tips, routes &amp; quiet offers. No spam.
             </p>
             <NewsletterForm />
           </div>
         </div>
       </div>
 
-      {/* Oversized wordmark — a deliberate architectural close. Each word sits on
-          its own line, sized so the longest word fits fully within the margins,
-          so the complete name always reads as a monument (never clipped). */}
-      <div className="relative z-10 select-none border-t border-on-primary/10 pt-14 md:pt-20">
+      {/* Understated wordmark close — a single quiet line that signs off the page
+          without dominating it. */}
+      <div className="relative z-10 select-none border-t border-on-primary/10 pt-10 md:pt-12">
         <div className="shell">
-          <span className="block font-serif uppercase leading-[0.84] tracking-[-0.025em] text-on-primary/[0.12] text-[16vw] md:text-[12.5vw]">
-            {SITE.name
-              .toUpperCase()
-              .split(' ')
-              .map((word) => (
-                <span key={word} className="block">
-                  {word}
-                </span>
-              ))}
+          <span className="block whitespace-nowrap font-serif uppercase leading-none tracking-[-0.02em] text-on-primary/[0.09] text-[8.5vw] md:text-[7vw]">
+            {SITE.name}
           </span>
         </div>
       </div>
@@ -108,14 +103,24 @@ export default function Footer() {
           © {new Date().getFullYear()} {SITE.name}. {SITE.tagline}.
         </p>
         <div className="flex gap-6 t-label text-on-primary/50">
+          <a
+            href={`https://wa.me/${SITE.whatsapp}`}
+            target="_blank"
+            rel="noreferrer"
+            className="transition-colors hover:text-tertiary-fixed"
+          >
+            WhatsApp
+          </a>
+          <a
+            href={SITE.mapsUrl}
+            target="_blank"
+            rel="noreferrer"
+            className="transition-colors hover:text-tertiary-fixed"
+          >
+            Google Reviews
+          </a>
           <a href="#" className="transition-colors hover:text-tertiary-fixed">
             Instagram
-          </a>
-          <a href="#" className="transition-colors hover:text-tertiary-fixed">
-            LinkedIn
-          </a>
-          <a href="#" className="transition-colors hover:text-tertiary-fixed">
-            WhatsApp
           </a>
         </div>
       </div>

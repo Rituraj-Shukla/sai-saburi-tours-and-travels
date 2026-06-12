@@ -2,13 +2,11 @@
 const nextConfig = {
   reactStrictMode: true,
   images: {
-    formats: ['image/avif', 'image/webp'],
-    remotePatterns: [
-      {
-        protocol: 'https',
-        hostname: 'images.unsplash.com',
-      },
-    ],
+    // Serve the original /public images directly as plain <img> (no /_next/image
+    // optimizer). This makes every image work on ANY host — static export,
+    // shared hosting, CDN — and in every browser, with no sharp/AVIF dependency.
+    // The source JPEGs are already web-sized, so quality/weight stay fine.
+    unoptimized: true,
   },
 };
 
